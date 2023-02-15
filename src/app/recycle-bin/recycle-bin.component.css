@@ -1,0 +1,11 @@
+.card-header{
+    color: cadetblue;
+    text-transform: uppercase;
+    text-decoration: underline wavy;
+}
+.fa-trash-o{
+    color: red;
+}
+.fa-undo{
+    color: green;
+}

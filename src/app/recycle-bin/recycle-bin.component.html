@@ -1,0 +1,39 @@
+<div class="form-group-col">
+    <h5 class="card-header card-header-color mb-3 text-center ">
+        Deleted users
+    </h5>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>DOB</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of data">
+                <td>{{user.title}}</td>
+                <td>{{user.FirstName}}</td>
+                <td>{{user.LastName}}</td>
+                <td>{{user.DOB}}</td>   
+                <td>{{user.Email}}</td>
+                <td>
+                    <i class="fa fa-trash-o me-3" (click)="deleted(user.id)" data-toggle="tooltip" data-placement="top" title="Delete User"></i>
+                    <i class="fa fa-undo" (click)="delrest(user)" data-toggle="tooltip" data-placement="top" title="Restore User"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

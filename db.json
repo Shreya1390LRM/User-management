@@ -1,0 +1,53 @@
+{
+  "posts": [
+    {
+      "id": 8,
+      "title": "Miss",
+      "FirstName": "kavya",
+      "LastName": "pise",
+      "Email": "kavya@gmail.com",
+      "DOB": "2019-11-12",
+      "Password": "12345",
+      "confirmPassword": "12345",
+      "AcceptTerms": true
+    },
+    {
+      "id": 10,
+      "title": "Miss",
+      "FirstName": "priyal",
+      "LastName": "pise",
+      "Email": "priyal@gmail.com",
+      "DOB": "2017-10-05",
+      "Password": "12345",
+      "confirmPassword": "12345",
+      "AcceptTerms": true
+    },
+    {
+      "id": 11,
+      "title": "Miss",
+      "FirstName": "pooja",
+      "LastName": "posa",
+      "Email": "shreya@gmail.com",
+      "DOB": "2000-09-13",
+      "Password": "12345",
+      "confirmPassword": "12345",
+      "AcceptTerms": true
+    },
+    {
+      "id": 2,
+      "title": "Miss",
+      "FirstName": "Shreya",
+      "LastName": "Katare",
+      "Email": "shreya@gmail.com",
+      "DOB": "2000-09-13",
+      "Password": "54321",
+      "confirmPassword": "54321",
+      "AcceptTerms": true
+    }
+  ],
+  "Recycle": [],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

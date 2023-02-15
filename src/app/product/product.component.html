@@ -1,0 +1,187 @@
+
+<div class="card">
+    <h5 class="card-header card-header-color">
+        User Registration
+    </h5>
+    <div class="card-body">
+        <ng-template #content let-modal>
+            <div class="modal-header">
+                <h4 class="modal-title">Modal title</h4>
+                <button type="button" class="btn-close" aria-label="Close"
+                    (click)="modal.dismiss('Cross click')"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="addForm" (ngSubmit)="addUser()">
+                    <div class="row mb-3">
+                        <div class="form-group col">
+                            <label>Title</label>
+                            <select class="form-control" formControlName="title"
+                                [ngClass]="{'is-invalid':submitted && addForm.controls['title'].errors}">
+                                <option value="">--Select Title--</option>
+                                <option value="Mr">Mr</option>
+                                <option value="Miss">Miss</option>
+                                <option value="Mrs">Mrs</option>
+                                <option value="Ms">Ms</option>
+                            </select>
+                            <div *ngIf="submitted && addForm.controls['title'].errors" class="invalid-Feedback">
+                                This Field is required!
+                            </div>
+                        </div>
+                        <div class="form-group col-5">
+                            <label>First Name</label>
+                            <input type="text" class="form-control" formControlName="FirstName"
+                                placeholder="Enter First Name"
+                                [ngClass]="{'is-invalid':submitted && addForm.controls['FirstName'].errors}">
+                            <div *ngIf="submitted && addForm.controls['FirstName'].errors" class="invalid-Feedback">
+                                <div *ngIf="addForm.controls['FirstName'].errors['required']"> First Name is required!
+                                </div>
+                                <div *ngIf="addForm.controls['FirstName'].errors['minlength']"> Minimum character should
+                                    be 3</div>
+                                <div *ngIf="addForm.controls['FirstName'].errors['maxlength']"> Maximum character should
+                                    be 6</div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-5">
+                            <label>Last Name</label>
+                            <input type="text" class="form-control" formControlName="LastName"
+                                placeholder="Enter Last Name"
+                                [ngClass]="{'is-invalid':submitted && addForm.controls['LastName'].errors}">
+                            <div *ngIf="submitted && addForm.controls['LastName'].errors" class="invalid-Feedback">
+                                <div *ngIf="addForm.controls['LastName'].errors['required']"> First Name is required!
+                                </div>
+                                
+                                <div *ngIf="addForm.controls['LastName'].errors['maxlength']"> Maximum character should
+                                    be 6</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="form-group col-5">
+                            <label>Date Of Birth</label>
+                            <input type="date" class="form-control" formControlName="DOB"
+                                [ngClass]="{'is-invalid':submitted && addForm.controls['DOB'].errors}">
+                            <div *ngIf="submitted && addForm.controls['DOB'].errors" class="invalid-Feedback">
+                                <div *ngIf="addForm.controls['DOB'].errors['required']"> Date field is required!</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-5">
+                            <label>Email</label>
+                            <input type="email" class="form-control" formControlName="Email" placeholder="Enter Email"
+                                [ngClass]="{'is-invalid':submitted && addForm.controls['Email'].errors}">
+                            <div *ngIf="submitted && addForm.controls['Email'].errors" class="invalid-Feedback">
+                                This Field is required!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="form-group col-5">
+                            <label>Password</label>
+                            <input type="password" class="form-control" formControlName="Password"
+                                [ngClass]="{'is-invalid':submitted && addForm.controls['Password'].errors}">
+                            <div *ngIf="submitted && addForm.controls['Password'].errors" class="invalid-Feedback">
+                                This Field is required!
+                            </div>
+                        </div>
+                        <div class="form-group col-5">
+                            <label>Confirm Password</label>
+                            <input type="password" class="form-control" formControlName="confirmPassword"
+                                [ngClass]="{'is-invalid':submitted && addForm.controls['confirmPassword'].errors}">
+                            <div *ngIf="submitted && addForm.controls['confirmPassword'].errors"
+                                class="invalid-Feedback">
+                                <div *ngIf="addForm.controls['confirmPassword'].errors['required']"> field is required!
+                                </div>
+                                <div *ngIf="addForm.controls['confirmPassword'].errors['mustMatch']">
+                                    Password and confirmPassword will be same!!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="form-group col form-check">
+                            <input type="checkbox" class="form-check-input" id="acceptTerms"
+                                formControlName="AcceptTerms"
+                                [ngClass]="{'is-invalid':submitted && addForm.controls['AcceptTerms'].errors}">
+                            <label for="acceptTerms" class="form-check-label">Accept terms and conditions</label>
+                            <div *ngIf="submitted && addForm.controls['acceptTerms']" class="invalid-Feedback">
+                                This Field is required!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="form-group text-center ">
+                            <button type="submit" class="btn btn-success me-3">{{buttonText}}</button>
+                            <button type="button" class="btn btn-danger" (click)="cancel()">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-toggle="tooltip" data-placement="top" title="Close"  (click)="modal.close('Close click')">Close</button>
+            </div>
+        </ng-template>
+        <h5 class="header">
+            User List
+        </h5>
+        <div class="form-group mb-4">
+            <input class="form-control" type="text" [(ngModel)]="searchText" placeholder="Search">
+        </div>
+        <div class="addUser">
+            <button class="btn btn-outline-secondary mb-2 me-2" (click)="clearCount()" data-toggle="tooltip" data-placement="top" title="Go to bin" [routerLink]="['recyclebin']">RecycleBin
+                <span class="badge bg-secondary" *ngIf="badgeCount > 0">{{badgeCount}}</span>
+            </button>
+        </div>
+        <div class="addUser">
+            <button class="btn btn-outline-primary mb-2 me-2" (click)="openXl(content)" data-toggle="tooltip" data-placement="top" title="Add users" >Add User</button>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group-col">
+                <table class="table table-striped sortable" id="elementsPeriodic"
+                    *ngIf="(userData | filter: searchText).length >0; else noResults">
+                    <thead>
+                        <tr>
+                            <th *ngFor="let column of displayedColumns" (click)="sortByCol(column)">{{column}}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of userData | orderBy : order | filter: searchText | paginate
+                        : {
+                            itemsPerPage: tableSize,
+                            currentPage: page,
+                            totalItems: count
+                          };
+                    let i = index">
+                            <td>{{user.title}}</td>
+                            <td>{{user.FirstName}}</td>
+                            <td>{{user.LastName}}</td>
+                            <td>{{user.DOB}}</td>
+                            <td>{{user.Email}}</td>
+                            <td>
+                                <i class="fa me-3 fa-edit" (click)="edit(user.id)" data-toggle="tooltip" data-placement="top" title="Edit User!" ></i>
+                                <i class="fa fa-trash-o" (click)="delete(user)"data-toggle="tooltip" data-placement="top" title="Delete User" ></i>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <ng-template #noResults>
+            <p>No results found for"{{searchText}}".</p>
+        </ng-template>
+    </div>
+    <div class="card-footer pb-0 pt-3">
+        <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+        </pagination-controls>
+    </div>
+</div>
+
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
