@@ -4,9 +4,9 @@
 .fa-trash-o{
     color: red;
 }
-.card-header-color{
-    background-color: lightgrey;
-    color: black;
+.card-header-color,.card-footer{
+    background-color: blue;
+    color: white;
 }
 .addUser{
     text-align: right;

@@ -56,14 +56,7 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     this.setFormState();
     this.getAllUsers();
-
-    this.spinner.show();
-
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 2000);
   }
-
   displayedColumns = [
     'TITLE',
     'FIRST NAME',
@@ -225,7 +218,7 @@ export class ProductComponent implements OnInit {
           console.log(res);
           this.postDeletedUsertoRecycle(user);
           Swal.fire('Deleted!', 'User has been deleted.', 'success');
-          this.toastr.success('User Deleted Successfully..');
+          // this.toastr.success('User Deleted Successfully..');
         });
       } else {
         Swal.fire('Cancel!', 'Your Record is safe.', 'success');
@@ -260,7 +253,6 @@ export class ProductComponent implements OnInit {
   //code to get deleted user
   getdeletedUser() {
     this._UserApiService.getdeletedUser().subscribe((res) => {
-      
       this.deletedData = res;
       console.log('get :', res);
     });

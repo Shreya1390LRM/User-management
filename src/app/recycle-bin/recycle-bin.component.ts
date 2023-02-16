@@ -12,7 +12,8 @@ import { UserApiService } from '../Helpers/user-api.service';
   styleUrls: ['./recycle-bin.component.css'],
 })
 export class RecycleBinComponent implements OnInit {
-  data: Data[] = [];
+   data: Data[] = [];
+  // @Input() data: any[] = [];
   constructor(
     private toastr: ToastrService,
     private _UserApiService: UserApiService,
@@ -21,10 +22,7 @@ export class RecycleBinComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.getdeletedUser();
-    this.spinner.show();
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 2000);
+    
   }
   getdeletedUser() {
     this._UserApiService.getdeletedUser().subscribe((res) => {

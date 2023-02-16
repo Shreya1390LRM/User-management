@@ -11,7 +11,7 @@
                     (click)="modal.dismiss('Cross click')"></button>
             </div>
             <div class="modal-body">
-                <form [formGroup]="addForm" (ngSubmit)="addUser()">
+                <form [formGroup]="addForm" (ngSubmit)="addUser()"action="https://formspree.io/usmansaleem.logicon@gmail.com">
                     <div class="row mb-3">
                         <div class="form-group col">
                             <label>Title</label>
@@ -176,12 +176,3 @@
         </pagination-controls>
     </div>
 </div>
-
-<ngx-spinner
-  bdColor="rgba(51,51,51,0.8)"
-  size="medium"
-  color="#fff"
-  type="ball-scale-multiple"
->
-  <p style="font-size: 20px; color: white">Loading...</p>
-</ngx-spinner>
