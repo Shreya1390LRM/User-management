@@ -21,15 +21,15 @@ export class RecycleBinComponent implements OnInit {
     private spinner: NgxSpinnerService
   ) {}
   ngOnInit(): void {
-    this.getdeletedUser();
-    
+    // this.getdeletedUser();
   }
-  getdeletedUser() {
-    this._UserApiService.getdeletedUser().subscribe((res) => {
-      this.data = res;
-      console.log('get :', res);
-    });
+  getData(value){
+    console.log(value);
+    this.data=value;
+    this.ngOnInit()
+
   }
+
   deleted(user) {
     Swal.fire({
       title: 'Are you sure?',
@@ -45,7 +45,8 @@ export class RecycleBinComponent implements OnInit {
           .deleteUserFromRecyclebin(user)
           .subscribe((res) => {
             console.log(res);
-            this.getdeletedUser();
+            this.getData(user)
+            // this.getdeletedUser();
             this.restoreRecycle(user);
             Swal.fire(
               'Deleted!',
@@ -64,8 +65,9 @@ export class RecycleBinComponent implements OnInit {
       .deleteUserFromRecyclebin(userData)
       .subscribe((res) => {
         console.log(res);
-        this.getdeletedUser();
+        // this.getdeletedUser();
         this.restoreRecycle(userData);
+        this.getData(userData)
       });
   }
 
@@ -83,4 +85,6 @@ export class RecycleBinComponent implements OnInit {
     console.log('test');
     this.ngOnInit();
   }
+ 
+  
 }

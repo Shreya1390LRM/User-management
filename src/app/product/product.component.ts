@@ -7,7 +7,9 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { eventListeners } from '@popperjs/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
@@ -25,7 +27,6 @@ import { Data1 } from '../Helpers/user.model';
   providers: [OrderBy],
 })
 export class ProductComponent implements OnInit {
-  deletedData: Data[] = [];
   page: number = 1;
   count: number = 0;
   tableSize: number = 7;
@@ -42,12 +43,16 @@ export class ProductComponent implements OnInit {
   buttonText: string = '';
   dbop: Action;
   userData: Data[] = [];
+  @Output() myoutput : EventEmitter<any> = new EventEmitter();
+  deletedData: Data[] = [];
   badgeCount: number;
   constructor(
     private toastr: ToastrService,
     private modalService: NgbModal,
     private _UserApiService: UserApiService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private router : Router
+
   ) {
     this.getAllUsers();
     this.getdeletedUser();
@@ -151,7 +156,7 @@ export class ProductComponent implements OnInit {
           console.log(res);
           this.toastr.success('User Added Successfully..');
           this.addForm.reset();
-          this.postDeletedUsertoRecycle(this.userData);
+          // this.postDeletedUsertoRecycle(this.userData);
           this.getAllUsers();
           this.cancel();
         });
@@ -259,5 +264,10 @@ export class ProductComponent implements OnInit {
   }
   clearCount() {
     this.badgeCount = 0;
+  }
+  sendData(){
+    this.myoutput.emit(this.deletedData);
+    // this.router.navigate[('/recyclebin')];
+    this.clearCount();
   }
 }

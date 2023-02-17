@@ -1,25 +1,23 @@
 {
   "posts": [
     {
-      "id": 2,
+      "id": 3,
       "title": "Miss",
-      "FirstName": "Shreya",
-      "LastName": "Katare",
-      "Email": "shreya@gmail.com",
-      "DOB": "2000-09-13",
-      "Password": "12345",
-      "confirmPassword": "12345",
+      "FirstName": "Kavya",
+      "LastName": "VPise",
+      "Email": "kavya@gmail.com",
+      "DOB": "2019-11-12",
+      "Password": "",
       "AcceptTerms": true
     },
     {
-      "id": 1,
+      "id": 2,
       "title": "Mr",
-      "FirstName": "pramod",
-      "LastName": "katare  ",
+      "FirstName": "Pramod",
+      "LastName": "Katare",
       "Email": "pramod@gmail.com",
       "DOB": "2004-02-11",
-      "Password": "54321",
-      "confirmPassword": "54321",
+      "Password": "",
       "AcceptTerms": true
     }
   ],

@@ -127,7 +127,7 @@
             <input class="form-control" type="text" [(ngModel)]="searchText" placeholder="Search">
         </div>
         <div class="addUser">
-            <button class="btn btn-outline-secondary mb-2 me-2" (click)="clearCount()" data-toggle="tooltip" data-placement="top" title="Go to bin" [routerLink]="['recyclebin']">RecycleBin
+            <button class="btn btn-outline-secondary mb-2 me-2" (click)="sendData()" data-toggle="tooltip" data-placement="top" title="Go to bin" [routerLink]="['/recyclebin']" routerLinkActive="router-link-active"  >RecycleBin
                 <span class="badge bg-secondary" *ngIf="badgeCount > 0">{{badgeCount}}</span>
             </button>
         </div>
